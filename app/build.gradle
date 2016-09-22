@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
 
 android {
     compileSdkVersion 23
@@ -7,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 10001
+        versionName "1.0.1"
     }
     buildTypes {
         release {
@@ -18,8 +20,35 @@ android {
     }
 }
 
+ext {
+    bintrayRepo = 'br.com.diogogr85'
+    bintrayName = 'customspinner'
+
+    publishedGroupId = 'br.com.diogogr85'
+    libraryName = 'CustomSpinner'
+    artifact = 'customspinner'
+
+    libraryDescription = 'Custom AppCompatSpinner with hint and no margins'
+
+    siteUrl = 'https://github.com/diogogr85/CustomSpinner'
+    gitUrl = 'https://github.com/diogogr85/CustomSpinner.git'
+
+    libraryVersion = '1.0.1'
+
+    developerId = 'diogogr85'
+    developerName = 'Diogo Ribeiro'
+    developerEmail = 'diogogr85@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
 }
+
+apply from: 'https://raw.githubusercontent.com/diogogr85/build-library/master/install.gradle'
+apply from: 'https://raw.githubusercontent.com/diogogr85/build-library/master/bintray.gradle'
